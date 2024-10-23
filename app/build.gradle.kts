@@ -68,7 +68,8 @@ dependencies {
 
     // Retrofit and Moshi (for API calls and JSON parsing)
     implementation(libs.retrofit)
-    implementation(libs.google.gson)
+    implementation(libs.logging.interceptor)
+    implementation(libs.converter.gson)
 
     //Room DB
     implementation(libs.androidx.room.runtime)
