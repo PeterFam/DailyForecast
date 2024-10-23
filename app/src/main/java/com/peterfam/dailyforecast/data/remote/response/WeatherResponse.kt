@@ -17,7 +17,7 @@ data class WeatherResponse(
 	val message: Int? = null,
 
 	@field:SerializedName("list")
-	val list: List<ListItem?>? = null
+	val weatherDataItems: List<WeatherDataItem?>? = null
 )
 
 data class WeatherItem(
@@ -35,7 +35,7 @@ data class WeatherItem(
 	val id: Int? = null
 )
 
-data class ListItem(
+data class WeatherDataItem(
 
 	@field:SerializedName("dt")
 	val dt: Int? = null,
