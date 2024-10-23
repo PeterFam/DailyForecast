@@ -1,4 +1,4 @@
-package com.peterfam.dailyforecast.data
+package com.peterfam.dailyforecast.data.remote
 
 import com.peterfam.dailyforecast.data.remote.response.CitiesResponse
 import com.peterfam.dailyforecast.data.remote.response.WeatherResponse
