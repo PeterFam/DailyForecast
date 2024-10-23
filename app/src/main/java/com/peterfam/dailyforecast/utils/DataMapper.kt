@@ -1,7 +1,10 @@
 package com.peterfam.dailyforecast.utils
 
 import com.peterfam.dailyforecast.data.local.model.CityEntity
+import com.peterfam.dailyforecast.data.local.model.WeatherEntity
 import com.peterfam.dailyforecast.data.remote.response.CitiesItem
+import com.peterfam.dailyforecast.data.remote.response.WeatherDataItem
+import com.peterfam.dailyforecast.data.remote.response.WeatherResponse
 
 fun CitiesItem.toCityEntity(): CityEntity = CityEntity(
     id = this.id ?: 0,

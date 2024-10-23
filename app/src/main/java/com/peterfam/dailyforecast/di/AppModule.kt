@@ -4,6 +4,10 @@ import android.content.Context
 import androidx.room.Room
 import com.peterfam.dailyforecast.data.local.db.CityDao
 import com.peterfam.dailyforecast.data.local.db.DailyForecastDB
+import com.peterfam.dailyforecast.data.local.db.WeatherDao
+import com.peterfam.dailyforecast.data.remote.DailyForecastApi
+import com.peterfam.dailyforecast.domain.DailyForecastRepository
+import com.peterfam.dailyforecast.domain.DailyForecastRepositoryImpl
 import com.peterfam.dailyforecast.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -14,6 +18,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -48,13 +53,33 @@ object AppModule {
     @Singleton
     @Provides
     fun provideRoomDatabase(@ApplicationContext context: Context): DailyForecastDB{
-        return Room.databaseBuilder(context, DailyForecastDB::class.java, Constants.DBName).build()
+        return Room.databaseBuilder(
+            context,
+            DailyForecastDB::class.java,
+            Constants.DBName)
+            .build()
     }
 
     @Singleton
     @Provides
-    fun provideDao(database: DailyForecastDB): CityDao = database.cityDao()
+    fun provideDailyForecastApi(retrofit: Retrofit.Builder): DailyForecastApi = retrofit.baseUrl("").build().create()
 
+    @Singleton
+    @Provides
+    fun provideCityDao(database: DailyForecastDB): CityDao = database.cityDao()
+
+    @Singleton
+    @Provides
+    fun provideWeatherDao(database: DailyForecastDB): WeatherDao = database.weatherDao()
+
+    @Singleton
+    @Provides
+    fun provideDailyForecastRepository(
+        @ApplicationContext context: Context,
+        weatherDao: WeatherDao,
+        cityDao: CityDao,
+        api: DailyForecastApi): DailyForecastRepository
+    = DailyForecastRepositoryImpl(context, weatherDao, cityDao, api)
 
 
 }
