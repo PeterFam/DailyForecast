@@ -8,16 +8,16 @@ data class WeatherResponse(
 	val city: City? = null,
 
 	@field:SerializedName("cnt")
-	val cnt: Int? = null,
+	val cnt: Int? = null, // A number of timestamps returned in the API response
 
 	@field:SerializedName("cod")
-	val cod: String? = null,
+	val cod: String? = null, // API code
 
 	@field:SerializedName("message")
 	val message: Int? = null,
 
 	@field:SerializedName("list")
-	val weatherDataItems: List<WeatherDataItem?>? = null
+	val weatherDataItems: List<WeatherDataItem>? = null
 )
 
 data class WeatherItem(
