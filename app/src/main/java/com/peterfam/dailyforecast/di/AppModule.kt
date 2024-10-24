@@ -2,6 +2,7 @@ package com.peterfam.dailyforecast.di
 
 import android.content.Context
 import androidx.room.Room
+import com.peterfam.dailyforecast.BuildConfig
 import com.peterfam.dailyforecast.data.local.db.CityDao
 import com.peterfam.dailyforecast.data.local.db.DailyForecastDB
 import com.peterfam.dailyforecast.data.local.db.WeatherDao
@@ -63,7 +64,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideDailyForecastApi(retrofit: Retrofit.Builder): DailyForecastApi
-    = retrofit.baseUrl("").build().create()
+    = retrofit.baseUrl(BuildConfig.BASE_URL).build().create()
 
     @Singleton
     @Provides

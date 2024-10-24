@@ -12,9 +12,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.peterfam.dailyforecast.data.remote.response.CitiesItem
 
 @Composable
-fun ErrorView(errorMessage: String, onRetry: () -> Unit) {
+fun ErrorView(errorMessage: String, onRetry: (CitiesItem?) -> Unit, selectedCity: CitiesItem?) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -22,7 +23,7 @@ fun ErrorView(errorMessage: String, onRetry: () -> Unit) {
     ) {
         Text(text = errorMessage, color = Color.Red)
         Spacer(modifier = Modifier.height(8.dp))
-        Button(onClick = onRetry) {
+        Button(onClick = { onRetry.invoke(selectedCity) }) {
             Text(text = "Retry")
         }
     }

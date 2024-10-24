@@ -18,12 +18,12 @@ class MainActivity: ComponentActivity() {
         setContent {
             WeatherAppScreen(
                 cities = viewModel.citiesList, // Load cities from the ViewModel or repository
-                selectedCity = null,
+                selectedCity = viewModel.selectedCity,
                 onCitySelected = { city -> viewModel. fetchWeather(city) },
                 weatherData = viewModel.weatherData,
                 isLoading = viewModel.isLoading,
                 errorMessage = viewModel.errorMessage,
-                onRetry = { /* Handle retry logic */ }
+                onRetry = { city -> city?.let { viewModel. fetchWeather(city) }}
             )
         }
     }

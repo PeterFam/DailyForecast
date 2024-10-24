@@ -1,5 +1,6 @@
 package com.peterfam.dailyforecast.data.remote
 
+import com.peterfam.dailyforecast.BuildConfig
 import com.peterfam.dailyforecast.data.remote.response.CitiesResponse
 import com.peterfam.dailyforecast.data.remote.response.WeatherResponse
 import retrofit2.Response
@@ -16,6 +17,6 @@ suspend fun getWeather(@Query("lat") lat: Double,
 
 @GET
 suspend fun getCities(
-    @Url url: String = ""
+    @Url url: String = BuildConfig.CITIES_URL
 ): Response<CitiesResponse>
 }

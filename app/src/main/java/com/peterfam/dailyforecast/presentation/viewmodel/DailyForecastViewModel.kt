@@ -20,7 +20,7 @@ class DailyForecastViewModel @Inject constructor(private val repository: DailyFo
     var isLoading by mutableStateOf(false)
     var errorMessage by mutableStateOf<String?>(null)
     var citiesList by mutableStateOf<List<CitiesItem>>(emptyList())
-
+    var selectedCity by mutableStateOf<CitiesItem?>(null)
     init {
         getCities()
     }
@@ -39,7 +39,7 @@ class DailyForecastViewModel @Inject constructor(private val repository: DailyFo
     }
 
     fun fetchWeather(city: CitiesItem) {
-        Log.d("testttt", "gereee")
+        selectedCity = city
         viewModelScope.launch {
             try {
                 isLoading = true

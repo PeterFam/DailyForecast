@@ -19,7 +19,7 @@ fun WeatherAppScreen(
     weatherData: List<WeatherDataItem>?,
     isLoading: Boolean,
     errorMessage: String?,
-    onRetry: () -> Unit
+    onRetry: (CitiesItem?) -> Unit
 ) {
     Column {
         AppBarWithDropdown(
@@ -33,7 +33,7 @@ fun WeatherAppScreen(
         if (isLoading) {
             CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
         } else if (errorMessage != null) {
-            ErrorView(errorMessage, onRetry)
+            ErrorView(errorMessage, onRetry, selectedCity)
         } else {
             WeatherForecastList(weatherData = weatherData)
         }
