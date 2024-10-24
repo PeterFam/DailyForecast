@@ -16,8 +16,11 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "API_KEY", "\"${project.properties["API_KEY"]}\"")
+        buildConfigField("String", "BASE_URL", "\"${project.properties["BASE_URL"]}\"")
+        buildConfigField("String", "CITIES_URL", "\"${project.properties["CITIES_URL"]}\"")
+        buildConfigField("String", "ICONS_BASE_URL", "\"${project.properties["ICONS_BASE_URL"]}\"")
     }
 
     buildTypes {
@@ -73,6 +76,7 @@ dependencies {
 
     //Room DB
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.material3.android)
     annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.room.ktx)
     ksp(libs.androidx.room.compiler)
@@ -85,6 +89,9 @@ dependencies {
     //Hilt Android
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+
+    implementation(libs.coil)
+    implementation(libs.coil.kt)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -2,6 +2,7 @@ package com.peterfam.dailyforecast.di
 
 import android.content.Context
 import androidx.room.Room
+import com.peterfam.dailyforecast.BuildConfig
 import com.peterfam.dailyforecast.data.local.db.CityDao
 import com.peterfam.dailyforecast.data.local.db.DailyForecastDB
 import com.peterfam.dailyforecast.data.local.db.WeatherDao
@@ -27,11 +28,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(
-        loggingInterceptor: HttpLoggingInterceptor,
-    ): OkHttpClient {
+    fun provideOkHttpClient(): OkHttpClient {
         val builder = OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            })
             .readTimeout(1, java.util.concurrent.TimeUnit.MINUTES)
             .writeTimeout(1, java.util.concurrent.TimeUnit.MINUTES)
             .connectTimeout(1, java.util.concurrent.TimeUnit.MINUTES)
@@ -62,15 +63,18 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideDailyForecastApi(retrofit: Retrofit.Builder): DailyForecastApi = retrofit.baseUrl("").build().create()
+    fun provideDailyForecastApi(retrofit: Retrofit.Builder): DailyForecastApi
+    = retrofit.baseUrl(BuildConfig.BASE_URL).build().create()
 
     @Singleton
     @Provides
-    fun provideCityDao(database: DailyForecastDB): CityDao = database.cityDao()
+    fun provideCityDao(database: DailyForecastDB): CityDao
+    = database.cityDao()
 
     @Singleton
     @Provides
-    fun provideWeatherDao(database: DailyForecastDB): WeatherDao = database.weatherDao()
+    fun provideWeatherDao(database: DailyForecastDB): WeatherDao
+    = database.weatherDao()
 
     @Singleton
     @Provides

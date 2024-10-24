@@ -14,5 +14,5 @@ interface CityDao {
     suspend fun insertCity(cityEntityList: List<CityEntity>)
 
     @Query("SELECT * FROM city")
-    fun getCities(): Flow<List<CityEntity>>
+    suspend fun getCities(): List<CityEntity>
 }
