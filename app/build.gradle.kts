@@ -73,6 +73,7 @@ dependencies {
 
     //Room DB
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.material3.android)
     annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.room.ktx)
     ksp(libs.androidx.room.compiler)
@@ -85,6 +86,9 @@ dependencies {
     //Hilt Android
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+
+    implementation(libs.coil)
+    implementation(libs.coil.kt)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

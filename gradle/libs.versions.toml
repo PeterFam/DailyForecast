@@ -15,10 +15,11 @@ composeBom = "2024.10.00"
 retrofit = "2.9.0"
 roomDB = "2.6.1"
 ui = "1.7.4"
-hiltCompose = "1.2.0"
 hiltAndroid = "2.50"
 hiltCompiler = "2.50"
 kspVersion = "2.0.21-1.0.25"
+material3Android = "1.3.0"
+coilVersion = "2.5.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -27,6 +28,7 @@ androidx-activity-compose = { group = "androidx.activity", name = "activity-comp
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-ui = { module = "androidx.compose.ui:ui", version.ref = "ui" }
+androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
 
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomDB" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomDB" }
@@ -40,12 +42,12 @@ material = { group = "com.google.android.material", name = "material", version.r
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 hilt-android = {group = "com.google.dagger", name = "hilt-android", version.ref = "hiltAndroid"}
 hilt-compiler = {group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hiltCompiler"}
-hilt-compose = {group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltCompose"}
-
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+coil = {group = "io.coil-kt", name ="coil", version.ref = "coilVersion"}
+coil-kt = {group = "io.coil-kt", name = "coil-compose", version.ref = "coilVersion"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
