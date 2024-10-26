@@ -80,7 +80,6 @@ dependencies {
     annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.room.ktx)
     ksp(libs.androidx.room.compiler)
-    testImplementation(libs.room.testing)
 
     // Room for Caching
     implementation(libs.androidx.room.runtime)
@@ -89,6 +88,8 @@ dependencies {
     //Hilt Android
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+    kspTest(libs.dagger.hilt.compiler)
+    testImplementation(libs.hilt.android.testing)
 
     implementation(libs.coil)
     implementation(libs.coil.kt)
@@ -96,4 +97,17 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.mockk)
+
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.androidx.espresso.core)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation(libs.mockwebserver)
+    testImplementation ("com.google.truth:truth:1.1.5")
+
 }

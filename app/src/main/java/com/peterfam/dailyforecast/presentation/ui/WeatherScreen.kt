@@ -7,6 +7,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.peterfam.dailyforecast.data.remote.response.CitiesItem
 import com.peterfam.dailyforecast.data.remote.response.WeatherDataItem
@@ -31,7 +32,7 @@ fun WeatherAppScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         if (isLoading) {
-            CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
+            CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally).testTag("CircularProgressIndicator"))
         } else if (errorMessage != null) {
             ErrorView(errorMessage, onRetry, selectedCity)
         } else {

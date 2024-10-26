@@ -25,7 +25,7 @@ class DailyForecastViewModel @Inject constructor(private val repository: DailyFo
         getCities()
     }
 
-    private fun getCities(){
+    fun getCities(){
         viewModelScope.launch {
             try {
                 isLoading = true
