@@ -108,6 +108,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     testImplementation(libs.mockwebserver)
-    testImplementation ("com.google.truth:truth:1.1.5")
+    testImplementation (libs.truth)
 
 }
