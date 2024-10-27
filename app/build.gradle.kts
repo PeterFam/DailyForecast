@@ -16,8 +16,11 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "API_KEY", "\"${project.properties["API_KEY"]}\"")
+        buildConfigField("String", "BASE_URL", "\"${project.properties["BASE_URL"]}\"")
+        buildConfigField("String", "CITIES_URL", "\"${project.properties["CITIES_URL"]}\"")
+        buildConfigField("String", "ICONS_BASE_URL", "\"${project.properties["ICONS_BASE_URL"]}\"")
     }
 
     buildTypes {
@@ -73,10 +76,10 @@ dependencies {
 
     //Room DB
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.material3.android)
     annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.room.ktx)
     ksp(libs.androidx.room.compiler)
-    testImplementation(libs.room.testing)
 
     // Room for Caching
     implementation(libs.androidx.room.runtime)
@@ -85,8 +88,26 @@ dependencies {
     //Hilt Android
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+    kspTest(libs.dagger.hilt.compiler)
+    testImplementation(libs.hilt.android.testing)
+
+    implementation(libs.coil)
+    implementation(libs.coil.kt)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.mockk)
+
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.androidx.espresso.core)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation(libs.mockwebserver)
+    testImplementation (libs.truth)
+
 }
